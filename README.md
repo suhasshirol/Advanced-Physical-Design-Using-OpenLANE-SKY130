@@ -35,9 +35,9 @@
 **</br>RTL to GDSII Introduction**
 </br>From conception to product, the ASIC design flow is an iterative process that is not static for every design. The details of the flow may change depending on ECO’s, IP requirements, DFT insertion, and SDC constraints, however the base concepts still remain. The flow can be broken down into 11 steps:
 
-</br>Architectural Design – A system engineer will provide the VLSI engineer with specifications for the system that are determined through physical constraints. The VLSI engineer will be required to design a circuit that meets these constraints at a microarchitecture modeling level.
+</br>1.Architectural Design – A system engineer will provide the VLSI engineer with specifications for the system that are determined through physical constraints. The VLSI engineer will be required to design a circuit that meets these constraints at a microarchitecture modeling level.
 
-</br>RTL Design/Behavioral Modeling – RTL design and behavioral modeling are performed with a hardware description language (HDL). EDA tools will use the HDL to perform mapping of higher-level components to the transistor level needed for physical implementation. HDL modeling is normally performed using either Verilog or VHDL. One of two design methods may be employed while creating the HDL of a microarchitecture:
+</br>2.RTL Design/Behavioral Modeling – RTL design and behavioral modeling are performed with a hardware description language (HDL). EDA tools will use the HDL to perform mapping of higher-level components to the transistor level needed for physical implementation. HDL modeling is normally performed using either Verilog or VHDL. One of two design methods may be employed while creating the HDL of a microarchitecture:
 </br>a. 	RTL Design – Stands for Register Transfer Level. It provides an abstraction of the digital   circuit using:
  
 </br>   i. 	Combinational logic
@@ -46,26 +46,160 @@
  
 </br>b. 	Behavioral Modeling – Allows the microarchitecture modeling to be performed with behavior-based modeling in HDL. This method bridges the gap between C and HDL allowing HDL design to be performed
 
-</br>RTL Verification - Behavioral verification of design
+</br>3.RTL Verification - Behavioral verification of design
 
-</br>DFT Insertion - Design-for-Test Circuit Insertion
+</br>4.DFT Insertion - Design-for-Test Circuit Insertion
 
-</br>Logic Synthesis – Logic synthesis uses the RTL netlist to perform HDL technology mapping. The synthesis process is normally performed in two major steps:
+</br>5.Logic Synthesis – Logic synthesis uses the RTL netlist to perform HDL technology mapping. The synthesis process is normally performed in two major steps:
   
-</br>GTECH Mapping – Consists of mapping the HDL netlist to generic gates what are used to perform logical optimization based on AIGERs and other topologies created from the generic mapped netlist.
-</br>Technology Mapping – Consists of mapping the post-optimized GTECH netlist to standard cells described in the PDK
+</br>6.GTECH Mapping – Consists of mapping the HDL netlist to generic gates what are used to perform logical optimization based on AIGERs and other topologies created from the generic mapped netlist.
+</br>7.Technology Mapping – Consists of mapping the post-optimized GTECH netlist to standard cells described in the PDK
   </br>Standard Cells – Standard cells are fixed height and a multiple of unit size width. This width is an integer multiple of the SITE size or the PR boundary. Each standard cell comes with SPICE, HDL, liberty, layout (detailed and abstract) files used by different tools at different stages in the RTL2GDS flow.
 
-</br>Post-Synthesis STA Analysis: Performs setup analysis on different path groups.
+</br>8.Post-Synthesis STA Analysis: Performs setup analysis on different path groups.
 
-</br>Floorplanning – Goal is to plan the silicon area and create a robust power distribution network (PDN) to power each of the individual components of the synthesized netlist. In addition, macro placement and blockages must be defined before placement occurs to ensure a legalized GDS file. In power planning we create the ring which is connected to the pads which brings power around the edges of the chip. We also include power straps to bring power to the middle of the chip using higher metal layers which reduces IR drop and electro-migration problem.
+</br>9.Floorplanning – Goal is to plan the silicon area and create a robust power distribution network (PDN) to power each of the individual components of the synthesized netlist. In addition, macro placement and blockages must be defined before placement occurs to ensure a legalized GDS file. In power planning we create the ring which is connected to the pads which brings power around the edges of the chip. We also include power straps to bring power to the middle of the chip using higher metal layers which reduces IR drop and electro-migration problem.
 
-</br>Placement – Place the standard cells on the floorplane rows, aligned with sites defined in the technology lef file. Placement is done in two steps: Global and Detailed. In Global placement tries to find optimal position for all cells but they may be overlapping and not aligned to rows, detailed placement takes the global placement and legalizes all of the placements trying to adhere to what the global placement wants.
+</br>10.Placement – Place the standard cells on the floorplane rows, aligned with sites defined in the technology lef file. Placement is done in two steps: Global and Detailed. In Global placement tries to find optimal position for all cells but they may be overlapping and not aligned to rows, detailed placement takes the global placement and legalizes all of the placements trying to adhere to what the global placement wants.
 
-</br>CTS – Clock tree synteshsis is used to create the clock distribution network that is used to deliver the clock to all sequential elements. The main goal is to create a network with minimal skew across the chip. H-trees are a common network topology that is used to achieve this goal.
+</br>11.CTS – Clock tree synteshsis is used to create the clock distribution network that is used to deliver the clock to all sequential elements. The main goal is to create a network with minimal skew across the chip. H-trees are a common network topology that is used to achieve this goal.
 
-</br>Routing – Implements the interconnect system between standard cells using the remaining available metal layers after CTS and PDN generation. The routing is performed on routing grids to ensure minimal DRC errors.
+</br>12.Routing – Implements the interconnect system between standard cells using the remaining available metal layers after CTS and PDN generation. The routing is performed on routing grids to ensure minimal DRC errors.
 
 </br>The Skywater 130nm PDK uses 6 metal layers to perform CTS, PDN generation, and interconnect routing.
 Shown below is an example of a base RTL to GDS flow in ASIC design:
 </br>![asic_flow](https://user-images.githubusercontent.com/66528639/182840493-98caa784-61b7-41a0-844d-1fd534614ea2.png)
+
+**</br>ASIC design flow**
+</br>Process Design Kit (PDK) is the interface between the CAD designers and the foundry. The PDK is a collection of files used to model a fabrication process for the EDA tools used in designing an IC. PDK’s are traditionally closed-source and hence are the limiting factor to open-source Digital ASIC Design. Google and Skywater have broken this stigma and published the world’s first open-source PDK on June 30th, 2020. This breakthrough has been a catalyst for open-source EDA tools. This workshop focuses on using the open-source RTL2GDS EDA tool, OpenLANE, in conjunction with the Skywater 130nm PDK to perform the full RTL2GDS flow as shown below:
+</br>![openlane_flow](https://user-images.githubusercontent.com/66528639/182841773-c66eb755-3c89-4441-ab66-09ca7468174d.png)
+</br>OpenLANE flow consists of several stages. By default, all flow steps are run in sequence. Each stage may consist of multiple sub-stages. OpenLANE can also be run interactively as shown here.
+
+**</br>Synthesis**
+      </br> Yosys - Performs RTL synthesis using GTech mapping
+      </br> abc - Performs technology mappin to standard cells described in the PDK. We can adjust synthesis techniques using    different integrated abc scripts to get desired results
+     </br> OpenSTA - Performs static timing analysis on the resulting netlist to generate timing reports
+     </br> Fault – Scan-chain insertion used for testing post fabrication. Supports ATPG and test patterns compaction
+  
+**</br>Floorplan and PDN**
+
+  
+     </br> Init_fp - Defines the core area for the macro as well as the rows (used for placement) and the tracks (used for routing)
+     </br> Ioplacer - Places the macro input and output ports
+     </br> PDN - Generates the power distribution network
+     </br> Tapcell - Inserts welltap and decap cells in the floorplan
+     </br> Placement – Placement is done in two steps, one with global placement in which we place the designs across the chip, but they will not be legal placement with some standard cells overlapping each other, to fix this we perform a detailed placement which legalizes the design and ensures they fit in the standard cell rows
+     </br> RePLace - Performs global placement
+      </br>Resizer - Performs optional optimizations on the design
+      </br>OpenPhySyn - Performs timing optimizations on the design
+      </br>OpenDP - Perfroms detailed placement to legalize the globally placed components
+  
+  **</br>CTS**
+  
+     </br> TritonCTS - Synthesizes the clock distribution network
+  
+**</br>Routing**
+
+        </br>FastRoute - Performs global routing to generate a guide file for the detailed router
+      
+      </br>TritonRoute - Performs detailed routing from global routing guides
+      </br>SPEF-Extractor - Performs SPEF extraction that include parasitic information
+  
+**</br>GDSII Generation**
+
+       </br> Magic - Streams out the final GDSII layout file from the routed def
+  
+**</br>Checks**
+  
+     </br> Magic - Performs DRC Checks & Antenna Checks
+     </br> Netgen - Performs LVS Checks
+     
+**</br>Day - 1**
+</br>![1](https://user-images.githubusercontent.com/66528639/182842765-7dfbc07a-5819-434d-85f8-868704b91eae.jpg)
+</br>![2](https://user-images.githubusercontent.com/66528639/182842821-321d4145-11f9-4321-96b8-c5775019d751.jpg)
+</br>![3](https://user-images.githubusercontent.com/66528639/182843164-56bbba60-bc22-4a97-8601-af9affcc78c6.jpg)
+</br>![4](https://user-images.githubusercontent.com/66528639/182843185-2069deec-f812-412e-8a70-d2fdcf77483f.jpg)
+</br>![5](https://user-images.githubusercontent.com/66528639/182843262-f3074c08-ef57-40c7-98cd-bdba41632bdb.jpg)
+</br>![6](https://user-images.githubusercontent.com/66528639/182843333-3a4e5249-d895-4d0d-bb97-dccd11d6d927.jpg)
+</br>![7](https://user-images.githubusercontent.com/66528639/182843399-56a417aa-a0e7-4be8-a668-b30ddd83577f.jpg)
+</br>![8](https://user-images.githubusercontent.com/66528639/182843414-b5df2bf6-62fe-492f-8db1-1cca8cc698df.jpg)
+</br>![9](https://user-images.githubusercontent.com/66528639/182843433-34c06e6b-aa81-4963-8a7e-fc62847a3dfa.jpg)
+</br>![10](https://user-images.githubusercontent.com/66528639/182843453-5e99b87c-cb40-4660-9cfa-313a942082b6.jpg)
+</br>![11](https://user-images.githubusercontent.com/66528639/182843523-7d16ccb5-4dd1-45ad-a2f4-a3d42cf20bd3.jpg)
+</br>![12](https://user-images.githubusercontent.com/66528639/182843548-f57abf23-7f25-40fa-93e7-341a427e499c.jpg)
+</br>![13](https://user-images.githubusercontent.com/66528639/182843581-232aa97b-6731-4a17-be43-7c0e04ce09da.jpg)
+</br>![14](https://user-images.githubusercontent.com/66528639/182843598-c6df5d6a-b738-4d4d-90cf-985c14d36803.jpg)
+</br>![15](https://user-images.githubusercontent.com/66528639/182843665-4d192f2d-239d-4a7c-b2b2-39ed91578bbd.jpg)
+</br>![16](https://user-images.githubusercontent.com/66528639/182843707-586317c6-7adf-42a7-973b-69efe476522e.jpg)
+</br>![17](https://user-images.githubusercontent.com/66528639/182843743-23420c0a-5f79-49ec-9ece-5824386b231a.jpg)
+</br>![18](https://user-images.githubusercontent.com/66528639/182843762-a62ea223-c037-4c0d-b5ec-4f13d72504d7.jpg)
+</br>![19](https://user-images.githubusercontent.com/66528639/182843777-6d6ad852-1c9b-4ddf-ba0e-ca8d3904cc35.jpg)
+</br>![20_inovking_directory_openlane](https://user-images.githubusercontent.com/66528639/182843850-0801ec7a-ce9d-4a54-844a-c1b7ce1abf0c.jpg)
+</br>Directory OpenLANE
+</br>![21_inovking_openlane](https://user-images.githubusercontent.com/66528639/182843953-90ba34fb-045c-4b94-8061-e4c00edc58c4.jpg)
+</br>Invoking OpenLANE
+</br>![22_setting_environment_design](https://user-images.githubusercontent.com/66528639/182844100-7f3414d9-6dcb-4c5c-9a83-ed0e1a195218.jpg)
+</br>Setting Environment for Design
+</br>![23_synthesis_report](https://user-images.githubusercontent.com/66528639/182844170-921b0458-92d9-4743-9b91-ef5cee7ec494.jpg)
+</br>Synthesis Report of PICORV32a
+</br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
