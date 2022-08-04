@@ -84,35 +84,35 @@ Shown below is an example of a base RTL to GDS flow in ASIC design:
 **</br>Floorplan and PDN**
 
   
-     </br> Init_fp - Defines the core area for the macro as well as the rows (used for placement) and the tracks (used for routing)
-     </br> Ioplacer - Places the macro input and output ports
-     </br> PDN - Generates the power distribution network
-     </br> Tapcell - Inserts welltap and decap cells in the floorplan
-     </br> Placement – Placement is done in two steps, one with global placement in which we place the designs across the chip, but they will not be legal placement with some standard cells overlapping each other, to fix this we perform a detailed placement which legalizes the design and ensures they fit in the standard cell rows
-     </br> RePLace - Performs global placement
-      </br>Resizer - Performs optional optimizations on the design
-      </br>OpenPhySyn - Performs timing optimizations on the design
-      </br>OpenDP - Perfroms detailed placement to legalize the globally placed components
+     Init_fp - Defines the core area for the macro as well as the rows (used for placement) and the tracks (used for routing)
+     Ioplacer - Places the macro input and output ports
+     PDN - Generates the power distribution network
+     Tapcell - Inserts welltap and decap cells in the floorplan
+     Placement – Placement is done in two steps, one with global placement in which we place the designs across the chip, but they will not be legal placement with some standard cells overlapping each other, to fix this we perform a detailed placement which legalizes the design and ensures they fit in the standard cell rows
+     RePLace - Performs global placement
+     Resizer - Performs optional optimizations on the design
+     OpenPhySyn - Performs timing optimizations on the design
+     OpenDP - Perfroms detailed placement to legalize the globally placed components
   
   **</br>CTS**
   
-     </br> TritonCTS - Synthesizes the clock distribution network
+     TritonCTS - Synthesizes the clock distribution network
   
 **</br>Routing**
 
-        </br>FastRoute - Performs global routing to generate a guide file for the detailed router
+        FastRoute - Performs global routing to generate a guide file for the detailed router
       
-      </br>TritonRoute - Performs detailed routing from global routing guides
-      </br>SPEF-Extractor - Performs SPEF extraction that include parasitic information
+      TritonRoute - Performs detailed routing from global routing guides
+     SPEF-Extractor - Performs SPEF extraction that include parasitic information
   
 **</br>GDSII Generation**
 
-       </br> Magic - Streams out the final GDSII layout file from the routed def
+        Magic - Streams out the final GDSII layout file from the routed def
   
 **</br>Checks**
   
-     </br> Magic - Performs DRC Checks & Antenna Checks
-     </br> Netgen - Performs LVS Checks
+     Magic - Performs DRC Checks & Antenna Checks
+     Netgen - Performs LVS Checks
      
 **</br>Day - 1**
 </br>![1](https://user-images.githubusercontent.com/66528639/182842765-7dfbc07a-5819-434d-85f8-868704b91eae.jpg)
