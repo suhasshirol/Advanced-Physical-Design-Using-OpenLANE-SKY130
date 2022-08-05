@@ -114,7 +114,7 @@ Shown below is an example of a base RTL to GDS flow in ASIC design:
      Magic - Performs DRC Checks & Antenna Checks
      Netgen - Performs LVS Checks
      
-**</br>Day - 1**
+**</br>Day1 – Inception of open-source EDA, OpenLANE and Sky130 PDK**
 </br>![1](https://user-images.githubusercontent.com/66528639/182842765-7dfbc07a-5819-434d-85f8-868704b91eae.jpg)
 </br>![2](https://user-images.githubusercontent.com/66528639/182842821-321d4145-11f9-4321-96b8-c5775019d751.jpg)
 </br>![3](https://user-images.githubusercontent.com/66528639/182843164-56bbba60-bc22-4a97-8601-af9affcc78c6.jpg)
@@ -142,6 +142,12 @@ Shown below is an example of a base RTL to GDS flow in ASIC design:
 </br>Setting Environment for Design
 </br>![23_synthesis_report](https://user-images.githubusercontent.com/66528639/182844170-921b0458-92d9-4743-9b91-ef5cee7ec494.jpg)
 </br>Synthesis Report of PICORV32a
+
+**</br>Day 2 - Understand importance of good floorplan vs bad floorplan and introduction to library cells**
+</br>
+</br>![24_floorplan_magic](https://user-images.githubusercontent.com/66528639/182997205-05816076-6db2-4026-b2ea-e202157ce148.jpg)
+</br>
+</br>![25_placement](https://user-images.githubusercontent.com/66528639/182997218-993a68a3-6ec2-4eba-9980-65adefd12646.jpg)
 </br>
 
 
