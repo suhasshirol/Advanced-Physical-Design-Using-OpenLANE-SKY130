@@ -40,9 +40,9 @@
 **</br>2.RTL Design/Behavioral Modeling** – RTL design and behavioral modeling are performed with a hardware description language (HDL). EDA tools will use the HDL to perform mapping of higher-level components to the transistor level needed for physical implementation. HDL modeling is normally performed using either Verilog or VHDL. One of two design methods may be employed while creating the HDL of a microarchitecture:
 **</br>a. 	RTL Design** – Stands for Register Transfer Level. It provides an abstraction of the digital   circuit using:
  
-**</br>   i. 	Combinational logic**
-**</br>   ii. 	Registers**
- **</br>  iii. 	Modules (IP’s or Soft Macros)**
+ **</br>   i.Combinational logic**
+ **</br>   ii.Registers**
+   **</br> iii.Modules (IP’s or Soft Macros)**
  
 **</br>b. 	Behavioral Modeling** – Allows the microarchitecture modeling to be performed with behavior-based modeling in HDL. This method bridges the gap between C and HDL allowing HDL design to be performed
 
