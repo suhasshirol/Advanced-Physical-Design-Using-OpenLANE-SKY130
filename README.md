@@ -1,7 +1,7 @@
 # Advanced-Physical-Design-Using-OpenLANE-SKY130
 </br>![advanced_physical_design](https://user-images.githubusercontent.com/66528639/182838346-13fe85b8-a877-4628-b6aa-13480eea9e3d.png)
-</br>Content of Workshop</br>
 
+**</br>Content of Workshop</br>**
 **</br>Day1 – Inception of open-source EDA, OpenLANE and Sky130 PDK**
 </br>How to talk to computers
 </br>SoC design and OpenLANE
