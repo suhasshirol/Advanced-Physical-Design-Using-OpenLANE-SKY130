@@ -191,7 +191,7 @@ Shown below is an example of a base RTL to GDS flow in ASIC design:
 </br>![5 Lef file](https://user-images.githubusercontent.com/66528639/183261877-98e73a0d-dda0-437f-81c6-2ec3f0b3888d.jpg)
 </br>Lef file of inverter
 
-</br>Config.tcl
+**</br>Config.tcl**
 </br>
 # Design
 set ::env(DESIGN_NAME) "picorv32a"
