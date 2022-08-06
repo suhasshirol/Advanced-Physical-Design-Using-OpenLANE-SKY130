@@ -219,13 +219,17 @@ if { [file exists $filename] == 1} {
 }
 
 </br>![6 final_routing_1](https://user-images.githubusercontent.com/66528639/183262184-6a14f414-5b6f-46b3-89c5-98d7a1762ca5.jpg)
-
 </br>Final inverter in picorv32a
-
 </br>
 
 
-
+**</br>Day 5 - Final steps for RTL2GDS**
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
 
 
 
