@@ -160,14 +160,36 @@ Shown below is an example of a base RTL to GDS flow in ASIC design:
 **</br>Placement in OpenLANE</br>**
 
 **</br>Day 3 - Design and characterize one library cell using Magic Layout tool and ngspice**
-</br>
-</br>
 
-</br>
+</br>![1 Magic_Tech_file_path](https://user-images.githubusercontent.com/66528639/183261353-49f90892-c77f-4c33-8429-fa3cdf25dc31.jpg)
+</br>Magic Tech File Path
 
-</br>
+</br>![2 Inverter_layout](https://user-images.githubusercontent.com/66528639/183261357-7026af22-6828-406a-bd11-8fc4ed816827.jpg)
+</br>Inverter Layout view in Magaic T
 
-</br>
+</br>![3 Prasitics_Extraction](https://user-images.githubusercontent.com/66528639/183261363-eee58782-856b-4d87-a250-615a42608c54.jpg)
+</br>Prasitic Extraction of Inverter
+
+</br>![4 Extracted_spice_file](https://user-images.githubusercontent.com/66528639/183261386-d20ad05e-2a30-4eb7-84f0-3fbf3e64b84c.jpg)
+</br>Extration of Spice File
+
+</br>![5 Spice_file](https://user-images.githubusercontent.com/66528639/183261393-2abed6b1-472e-45b2-9bab-27c557952c47.jpg)
+</br>Spice File
+
+</br>![6 ngspice_run](https://user-images.githubusercontent.com/66528639/183261396-a5611eee-0ebd-4038-b641-89d2b1e1f56c.jpg)
+</br>ngspice run
+
+**</br>Day 4 - Pre-layout timing analysis and importance of good clock tree**
+</br>![Uploading 1.Grid_spacing.jpg…]()
+</br>Grid Spacing
+</br>![2 lef_generation](https://user-images.githubusercontent.com/66528639/183261515-33031b04-62fb-4de3-a18a-364891bddcd6.jpg)
+</br>Lef Generation from Layout
+</br>![3 New_config_file](https://user-images.githubusercontent.com/66528639/183261518-6886ba8d-9920-4aa5-93da-59231375b2ef.jpg)
+</br>New Configuration file
+</br>![4 synthesis_new_config_file](https://user-images.githubusercontent.com/66528639/183261525-dc74a934-50cc-42a3-a04b-fb11725914bc.jpg)
+</br>Synthesis report for new configuration file
+</br>![5 Lef file](https://user-images.githubusercontent.com/66528639/183261877-98e73a0d-dda0-437f-81c6-2ec3f0b3888d.jpg)
+</br>Lef file of inverter
 
 
 
