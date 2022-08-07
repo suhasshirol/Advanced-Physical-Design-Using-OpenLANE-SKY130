@@ -225,11 +225,13 @@ if { [file exists $filename] == 1} {
 
 **</br>Day 5 - Final steps for RTL2GDS**
 </br>
-</br>
-</br>
-</br>
-</br>
-</br>
+</br>Power Distribution Network (PDN)
+</br>![1 pdn](https://user-images.githubusercontent.com/66528639/183293818-4ee046f5-b20e-4047-9497-98a977277d9c.jpg)
+</br>Routing
+</br>![2 routing](https://user-images.githubusercontent.com/66528639/183294005-2d63cb11-a5cb-4b0f-966e-dc23d820774f.jpg)
+</br>Magic Layout after routing
+</br>![3 buf](https://user-images.githubusercontent.com/66528639/183294414-71294381-2ca2-49fc-93e6-f09c6dd49a23.jpg)
+
 
 
 
